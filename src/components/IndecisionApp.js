@@ -4,6 +4,7 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 const propTypes = {
   title: PropTypes.string,
@@ -21,7 +22,8 @@ class IndecisionApp extends Component {
   };
 
   state = {
-    options: []
+    options: [],
+    selectedOption: undefined
   };
 
   /**
@@ -92,7 +94,11 @@ class IndecisionApp extends Component {
   handlePickOption = () => {
     const randomPick = Math.floor(Math.random() * this.state.options.length);
 
-    alert('Do ' + this.state.options[randomPick]);
+    this.setState(() => ({selectedOption: this.state.options[randomPick]}));
+  };
+
+  handleCloseModal = () => {
+    this.setState(() => ({selectedOption: undefined}));
   };
 
   render = () => (
@@ -102,6 +108,7 @@ class IndecisionApp extends Component {
       <Options options={this.state.options} removeOption={this.handleRemoveOption}/>
       <AddOption addOption={this.handleAddOption}/>
       <button disabled={this.state.options.length < 1} onClick={this.handleRemoveAllOptions}>Remove All</button>
+      <OptionModal selectedOption={this.state.selectedOption} closeModal={this.handleCloseModal}/>
     </div>
   );
 }
