@@ -10,7 +10,7 @@ const Option = (props) => {
     <div className="option">
       <p className="option__text">{props.count}. {props.value}</p>
       <button
-        className="button button--link"
+        className="button button__link"
         onClick={(e) => {
           props.removeOption(props.value);
         }}>remove
