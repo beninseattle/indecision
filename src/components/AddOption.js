@@ -40,11 +40,11 @@ class AddOption extends Component {
   };
 
   render = () => (
-    <div>
-      {this.state.error && <div className="error">{this.state.error}</div>}
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="newoption" onChange={this.changeValue} value={this.state.newoption}/>
-        <button disabled={!this.state.newoption}>Add</button>
+    <div className="widget">
+      {this.state.error && <p className="add-option-error">{this.state.error}</p>}
+      <form className="add-option" onSubmit={this.handleSubmit}>
+        <input className="add-option__input" type="text" name="newoption" onChange={this.changeValue} value={this.state.newoption}/>
+        <button className="button" disabled={!this.state.newoption}>Add Option</button>
       </form>
     </div>
   );

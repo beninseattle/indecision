@@ -7,11 +7,14 @@ const propTypes = {
 
 const Option = (props) => {
   return (
-    <div>
-      {props.value}
-      <button onClick={(e) => {
-        props.removeOption(props.value);
-      }}>remove</button>
+    <div className="option">
+      <p className="option__text">{props.count}. {props.value}</p>
+      <button
+        className="button button--link"
+        onClick={(e) => {
+          props.removeOption(props.value);
+        }}>remove
+      </button>
     </div>
   );
 };
